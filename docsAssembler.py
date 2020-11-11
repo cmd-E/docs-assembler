@@ -9,12 +9,16 @@ def getAllDocx(directory = os.getcwd()):
             if f.endswith('.docx') or f.endswith('.doc'):
                 files.append(f)
     except:
-        print("В этой директории нет документов")
+        print(f"В директории {directory} нет документов")
         sys.exit()
     return files
 
 # start recording text on "ЭКЗАМЕНАЦИОННЫЙ БИЛЕТ № **" end on "Составитель ст.преподаватель кафедры «РЭТ»                           Наурыз К.Ж."
 def copyAllDocsToOne(path, mainDoc, docs, startPhrase, endPhrase):
+    if len(docs) == 0:
+        print(f"Нет документов в директории {path}")
+        printHelp()
+        sys.exit()
     for docName in docs:
         copyFlag = False
         paragraphsToCopy = []
@@ -40,18 +44,24 @@ def addParagraphsToMainDoc(mainDoc, paragraphsToCopy):
     for i in paragraphsToCopy:
         mainDoc.add_paragraph(i)
 
+def printHelp():
+    print('docsAssembler.py p <path> s <startphrase> -e <endphrase>')
+
 def main(argv):
-    path = '/home/deus/'
-    startPhrase = ''
-    endPhrase = ''
+    # path = ''
+    path = '/home/deus/a'
+    # startPhrase = ''
+    startPhrase = "ЭКЗАМЕНАЦИОННЫЙ БИЛЕТ"
+    # endPhrase = ''
+    endPhrase = "Составитель ст.преподаватель кафедры «РЭТ»"
     try:
         opts, _ = getopt.getopt(argv,"hp:s:e:",["path=","startph=","endph="])
     except getopt.GetoptError:
-        print('docsAssembler.py p <path> s <startphrase> -e <endphrase>')
+        printHelp()
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('docsAssembler.py p <path> s <startphrase> -e <endphrase>')
+            printHelp()
             sys.exit()
         elif opt in ("-s", "--startph"):
             startPhrase = arg
