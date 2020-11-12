@@ -15,3 +15,7 @@
 ## Использование
 
 python3 docsAssembler.py [-h] [-p *path*] [-s *startphrase*] [-e *endphrase*]
+
+## Requirements
+
+`pyhton-docx` - `pip install python-docx`
