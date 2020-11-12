@@ -18,4 +18,4 @@ python3 docsAssembler.py [-h] [-p *path*] [-s *startphrase*] [-e *endphrase*]
 
 ## Requirements
 
-`pyhton-docx` - `pip install python-docx`
+[python-docx](https://pypi.org/project/python-docx/ "python-docx") - `pip install python-docx`
