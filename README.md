@@ -14,7 +14,7 @@
 
 ## Использование
 
-python3 docsAssembler.py [-h] [-p *path*] [-s *startphrase*] [-e *endphrase*]
+python3 docsAssembler.py [-h] [-p \*path\*] [-s *startphrase*] [-e *endphrase*]
 
 ## Requirements
 
